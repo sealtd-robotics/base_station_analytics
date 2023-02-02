@@ -61,9 +61,9 @@ def check_frequency(msg_type, _port, _baudrate):
                         
                         if (crc24quick(0x000000, size, buffer[i:i+size]) == 0x00):
                             header = (buffer[3] << 4) | (buffer[4] >> 4)
-                            print(header)
+                            print (time.asctime( time.localtime(time.time()) ) + (" , Message = ") + (str(header)))
                             if header == msg_type:
-                                print("New {} msg arrive after {} sec".format(msg_type, time.time() - t0))
+                                print (time.asctime( time.localtime(time.time()) ) + ": New {} msg arrive after {} sec".format(msg_type, time.time() - t0))
                                 t0 = time.time()
                         else:
                             # print(size, buffer[i:i+size])
@@ -113,9 +113,9 @@ def forward_correction_from_udp(msg_type):
                         
                         if (crc24quick(0x000000, size, buffer[i:i+size]) == 0x00):
                             header = (buffer[3] << 4) | (buffer[4] >> 4)
-                            print(header)
+                            print (time.asctime( time.localtime(time.time()) ) + (" , Message = ") + (str(header)))
                             if header == msg_type:
-                                print("New {} msg arrive after {} sec".format(msg_type, time.time() - t0))
+                                print(time.asctime( time.localtime(time.time()) ) + ": New {} msg arrive after {} sec".format(msg_type, time.time() - t0))
                                 t0 = time.time()
                         else:
                             # print(size, buffer[i:i+size])
@@ -133,7 +133,7 @@ if __name__ == '__main__':
     except getopt.GetoptError as err:
         print(err)
 
-    interface = "ethernet"
+    interface = "serial"
     msg_type = 1005
     baud_rate = 9600
     port = "/dev/ttyUSB0"
