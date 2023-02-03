@@ -63,7 +63,7 @@ def check_frequency(msg_type, _port, _baudrate):
                             header = (buffer[3] << 4) | (buffer[4] >> 4)
                             print (time.asctime( time.localtime(time.time()) ) + (" , Message = ") + (str(header)))
                             if header == msg_type:
-                                print (time.asctime( time.localtime(time.time()) ) + ": New {} msg arrive after {} sec".format(msg_type, time.time() - t0))
+                                print (time.asctime( time.localtime(time.time()) ) + " , New {} msg arrive after {} sec".format(msg_type, time.time() - t0))
                                 t0 = time.time()
                         else:
                             # print(size, buffer[i:i+size])
@@ -115,7 +115,7 @@ def forward_correction_from_udp(msg_type):
                             header = (buffer[3] << 4) | (buffer[4] >> 4)
                             print (time.asctime( time.localtime(time.time()) ) + (" , Message = ") + (str(header)))
                             if header == msg_type:
-                                print(time.asctime( time.localtime(time.time()) ) + ": New {} msg arrive after {} sec".format(msg_type, time.time() - t0))
+                                print(time.asctime( time.localtime(time.time()) ) + " , New {} msg arrive after {} sec".format(msg_type, time.time() - t0))
                                 t0 = time.time()
                         else:
                             # print(size, buffer[i:i+size])
